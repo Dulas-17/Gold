@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,refresh-rate=adaptive">
    <meta name="refresh-rate" content="adaptive">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Artist Profile</title>
 
     <style>
@@ -26,6 +27,49 @@ html{
   transition-timing-function:linear;
 }
 
+
+/* General Styles */
+html {
+  font-size: 16px; /* Base font size */
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Make sure the container scales based on screen size */
+.container {
+  max-width: 90%; /* Adjust width dynamically */
+  width: 100%;
+  padding: 1rem; /* Ensure spacing scales */
+  margin: auto;
+}
+
+/* Adjust button sizes to avoid overlap */
+.profile-actions button {
+  font-size: calc(1rem + 0.2vw); /* Adjust size based on screen width */
+  padding: 0.75rem 1.5rem;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+/* Handle font scaling based on user preferences */
+body {
+  font-size: clamp(14px, 1.6vw, 18px); /* Dynamically adjust font size */
+                   }
+
+        
 .container {
   width: 90%;
   max-width: 800px;
@@ -828,6 +872,22 @@ function adjustLayout() {
 // Run on load and window resize
 window.addEventListener('load', adjustLayout);
 window.addEventListener('resize', adjustLayout);
+
+  // Run adjustment on load and resize
+  adjustFontSize();
+  window.addEventListener("resize", adjustFontSize);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  
+  // Adjust base font size dynamically based on screen width
+  const adjustFontSize = () => {
+    const viewportWidth = window.innerWidth;
+    const baseSize = viewportWidth < 450 ? 14 : 16; // Default font sizes for small/large screens
+    root.style.fontSize = `${baseSize}px`;
+  };
+        
 
 </script>
 </body>
