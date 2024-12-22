@@ -47,19 +47,7 @@ html {
   animation: openPage 4s ease forwards; /* Expand smoothly */
 }
 
-/* Desktop layout */
-@media (min-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .section {
-        flex: 1;
-        margin: 10px;
-    }
-}
+
 
 /* Profile Section */
 .profile-section {
@@ -820,27 +808,6 @@ document.addEventListener('transitionend', (e) => {
   }
 });
 
-// Dynamically adjust structure based on screen size
-function adjustLayout() {
-    const container = document.querySelector('.container');
-    if (window.innerWidth >= 768) {
-        // Desktop layout
-        container.style.display = 'flex';
-        container.style.flexDirection = 'row';
-    } else {
-        // Mobile layout
-        container.style.display = 'block';
-    }
-}
-
-// Run on load and window resize
-window.addEventListener('load', adjustLayout);
-window.addEventListener('resize', adjustLayout);
-
-  // Run adjustment on load and resize
-  adjustFontSize();
-  window.addEventListener("resize", adjustFontSize);
-});
 
 
 
